@@ -1150,6 +1150,57 @@ document.getElementById('q').addEventListener('input',e=>{
 </div>
 <div id="page-bottom"></div>
 <div class="navbtns"><a href="#page-top">▲ 맨 위로</a><a href="#page-bottom">▼ 맨 아래로</a></div>
+ 
+<style>
+#crane-popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;align-items:center;justify-content:center;padding:20px}
+#crane-popup-overlay.show{display:flex}
+#crane-popup{background:white;border-radius:16px;max-width:380px;width:100%;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.3);border:3px solid #2e7d32;animation:popupBounce 0.5s ease}
+@keyframes popupBounce{0%{transform:scale(0.8);opacity:0}100%{transform:scale(1);opacity:1}}
+.crane-popup-header{background:#2e7d32;color:white;padding:16px 20px;text-align:center}
+.crane-popup-header h3{margin:0;font-size:18px;font-weight:bold}
+.crane-popup-body{padding:20px;text-align:center}
+.crane-popup-body p{margin:8px 0;font-size:13px;line-height:1.6;color:#334155}
+.crane-popup-body .contact{font-weight:bold;color:#14532d;margin-top:12px;font-size:13px}
+.crane-popup-btns{display:flex;gap:8px;padding:0 20px 20px}
+.crane-popup-btns a, .crane-popup-btns button{flex:1;padding:10px;border-radius:8px;font-size:13px;font-weight:bold;text-align:center;cursor:pointer;text-decoration:none;border:none}
+.btn-reserve{background:#2e7d32;color:white}
+.btn-close{background:#f1f5e9;color:#2e7d32;border:1px solid #a5d6a7 !important}
+#crane-float-btn{display:none;position:fixed;bottom:80px;right:12px;z-index:9998;background:#2e7d32;color:white;padding:10px 14px;border-radius:999px;font-size:12px;font-weight:bold;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+#crane-float-btn.show{display:block}
+</style>
+<div id="crane-popup-overlay">
+  <div id="crane-popup">
+    <div class="crane-popup-header">
+      <h3>🕊️ 겨울 손님 두루미가 왔습니다!</h3>
+    </div>
+    <div class="crane-popup-body">
+      <p><b>두루미는 3월 중순까지 있어요</b><br>10월말~3월초 관찰 가능<br>절정 12~1월</p>
+      <p style="background:#f0fdf4;padding:8px;border-radius:6px;font-size:12px">📍 해마루촌 (민통선)<br>네비: <b>두포나루터</b> → 전진교 초소<br>무료 투어 (자율 후원)</p>
+      <div class="contact">문의: 010-7788-1029 (문자/카톡)<br>KO/ENG 모두 010-7788-1029<br>예약 3일 전까지</div>
+      <p style="background:#fff7ed;padding:6px;border-radius:6px;font-size:11px;color:#9a3412;margin-top:8px">⚠️ 민통선 안내 시 필요: 김기호 소장 010-5314-9113<br>(초소에서 통화용)</p>
+    </div>
+    <div class="crane-popup-btns">
+      <a href="tel:010-7788-1029" class="btn-reserve">📞 예약하기</a>
+      <button onclick="closeCranePopup()" class="btn-close">닫기</button>
+    </div>
+  </div>
+</div>
+<div id="crane-float-btn" onclick="openCranePopup()">🕊️ 두루미</div>
+<script>
+function openCranePopup(){document.getElementById('crane-popup-overlay').classList.add('show');}
+function closeCranePopup(){document.getElementById('crane-popup-overlay').classList.remove('show');document.getElementById('crane-float-btn').classList.add('show');localStorage.setItem('wpsCranePopupClosed', Date.now());}
+(function(){
+  var lastClosed = localStorage.getItem('wpsCranePopupClosed');
+  var oneDay = 24*60*60*1000;
+  if(!lastClosed || (Date.now() - parseInt(lastClosed) > oneDay)){
+    setTimeout(function(){openCranePopup();}, 1200);
+  } else {
+    document.getElementById('crane-float-btn').classList.add('show');
+  }
+  document.getElementById('crane-popup-overlay').addEventListener('click', function(e){ if(e.target===this) closeCranePopup(); });
+})();
+</script>
+
 </body></html>
 
 <style>
