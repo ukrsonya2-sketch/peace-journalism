@@ -1151,7 +1151,7 @@ document.getElementById('q').addEventListener('input',e=>{
 <div id="page-bottom"></div>
 <div class="navbtns"><a href="#page-top">▲ 맨 위로</a><a href="#page-bottom">▼ 맨 아래로</a></div>
 </body></html>
-<!-- 두루미 챗봇 시작 - 이걸 index.html 맨 마지막 </body> 위에 복붙 -->
+
 <style>
 #durumi-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#2e7d32;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:99999}
 #durumi-win{position:fixed;bottom:90px;right:20px;width:350px;height:480px;background:white;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.25);display:none;flex-direction:column;z-index:99999;border:1px solid #ddd;overflow:hidden;font-family:sans-serif}
@@ -1185,5 +1185,5 @@ function durumiToggle(){document.getElementById('durumi-win').classList.toggle('
 function durumiQ(s){document.getElementById('durumi-qq').value=s;durumiSend()}
 function durumiSend(){const i=document.getElementById('durumi-qq');const t=i.value.trim();if(!t)return;const b=document.getElementById('durumi-body');b.innerHTML+=`<div class="durumi-msg durumi-user">${t}</div>`;b.innerHTML+=`<div class="durumi-msg durumi-bot">${durumiAns(t)}</div>`;i.value='';b.scrollTop=b.scrollHeight;}
 </script>
-<!-- 두루미 챗봇 끝 -->
+
 
